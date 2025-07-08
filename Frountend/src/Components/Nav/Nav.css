@@ -1,0 +1,270 @@
+/* Nav.css */
+.nav-container {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: background-image 1s ease-in-out;
+}
+
+.nav-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.222); /* Dark overlay for better readability */
+  display: flex;
+}
+
+.sidebar-nav {
+  width: 250px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+.vertical-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 60px; /* Increased gap between buttons */
+}
+
+.nav-button {
+  padding: 16px 24px; /* Increased button size */
+  font-size: 18px; /* Larger text */
+  background-color: #ffffff;
+  color: rgb(8, 6, 6);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #ff0000;
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content-area {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Typing Animation Title Styles */
+.typing-title-container {
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.typing-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease-in-out infinite;
+  position: relative;
+  font-family: 'Courier New', monospace;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursor {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: blink 1s infinite, gradientShift 3s ease-in-out infinite;
+  margin-left: 2px;
+  font-weight: normal;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.title-underline {
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+  margin: 20px auto;
+  border-radius: 2px;
+  transition: width 1s ease-out;
+  position: relative;
+}
+
+.title-underline.show {
+  width: 300px;
+  animation: shimmer 2s ease-in-out infinite 0.5s;
+}
+
+.title-underline.show::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Sparkle effect that appears after typing */
+.typing-title::before {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  left: -30px;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: sparkleDelayed 2s ease-in-out infinite 3s;
+}
+
+.typing-title::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -30px;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: sparkleDelayed 2s ease-in-out infinite 4s;
+}
+
+@keyframes sparkleDelayed {
+  0%, 10% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .nav-overlay {
+    flex-direction: column;
+  }
+
+  .sidebar-nav {
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .logo {
+    margin-bottom: 20px;
+  }
+
+  .vertical-nav-buttons {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 0 15px;
+    gap: 20px; /* Adjusted gap for mobile */
+    flex-wrap: wrap; /* Allow wrap on smaller screens */
+  }
+
+  .nav-button {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  .content-area {
+    padding: 15px;
+  }
+
+  .typing-title {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    min-height: 60px;
+  }
+
+  .title-underline.show {
+    width: 200px;
+  }
+
+  .typing-title::before,
+  .typing-title::after {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .typing-title {
+    font-size: 2rem;
+    min-height: 50px;
+  }
+
+  .title-underline.show {
+    width: 150px;
+  }
+}
