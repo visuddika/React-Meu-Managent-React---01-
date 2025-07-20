@@ -14,7 +14,8 @@ A simple menu management application built using **React**, **Tailwind CSS**, an
 - Fast build with Vite
 
 ## 🧰 Tech Stack
-![Uploading Screenshot 2025-07-07 154930.png…]()
+
+![Tech Stack Preview](./assets/tech-stack.png)
 
 - React
 - Tailwind CSS
